@@ -34,10 +34,22 @@
 
 .carouselScrollButton {
   margin: auto;
+  padding: 2px;
   width: 36px;
   height: auto;
   display: block;
 }
+
+.carouselArrowGlow {
+  margin: auto;
+  width: 36px;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #FF5000;
+  box-shadow: 0px 0px 5px 1px #CC6600;
+}
+
 
 .carouselItemBox {
   height: 255px;
