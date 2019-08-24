@@ -12,18 +12,19 @@ app.use(bodyParser.json());
 app.post('/item', (req, res) => {
   const item = new carouselItem({
     _id: new mongoose.Types.ObjectId(),
-    productId: req.body.productId,
-    name: req.body.name,
-    price: req.body.price,
-    stars: req.body.stars,
-    category: req.body.category,
-    picture: req.body.picture
+    ProductId: req.body.ProductId,
+    ItemName: req.body.ItemName,
+    Price: req.body.Price,
+    Rating: req.body.Rating,
+    Category: req.body.Category,
+    Photo: req.body.Photo,
+    Video: req.body.Video
   });
   item.save()
     .then(result => {
       res.status(201).send({
-        message: 'handling POST requests to /item',
-        createdProduct: result
+        message: 'handling POST requests to /item'
+        // createdProduct: result
       });
     })
     .catch(err => {
@@ -37,7 +38,7 @@ app.get('/item', (req, res) => {
   carouselItem.find(req.query.category === undefined ? null : { category: req.query.category })
     .exec()
     .then(doc => {
-      // console.log(doc);
+      console.log(doc);
       res.status(200).send(doc);
     })
     .catch(err => {
