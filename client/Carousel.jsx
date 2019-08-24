@@ -23,19 +23,19 @@ class Carousel extends Component {
   }
 
   componentDidMount() {
-    this.renderFiveMore(event, 'wizard');
+    this.renderFiveMore(event, 'quidditch');
   }
 
   renderFiveMore(event, category) {
     console.log(category);
     axios.get('/item', { 
       params: {
-        category: category
+        Category: category
       }
     })
       .then(data => {
         console.log(data);
-        this.setState({itemData: data.data});
+        this.setState({itemData: data.data.slice(0, 5)});
       })
       .catch(err => {
         console.error(err);

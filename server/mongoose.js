@@ -10,13 +10,14 @@ connection.once('open', function () {
 
 const schema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  productId: Number,
-  name: String,
-  price: String,
-  stars: Number,
-  category: String,
-  picture: String
-}, {collection: 'carousel-data' });
+  ProductId: Number,
+  ItemName: String,
+  Price: Number,
+  Rating: Number,
+  Category: String,
+  Photo: Array,
+  Video: String
+}, {collection: 'carousel-all-data' });
 
 const carouselItem = mongoose.model('carouselItem', schema);
 
