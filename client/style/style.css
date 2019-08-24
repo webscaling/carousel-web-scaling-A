@@ -1,0 +1,66 @@
+/* stretch goal - add items to carousel if screen is wide enough 
+   stretch goal -  have 
+   loading gif
+*/
+
+.carouselTitle {
+  color: #CC6600;
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-size: 16px;
+  margin: 0 0 20px 10px;
+}
+
+.carouselContainer {
+  display: flex;
+  flex-direction: row;
+  height: 255px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.carouselScrollButtonContainerL {
+  width: 40px;
+  height: 255px;
+  display: flex;
+  padding: 0 0 0 10px;
+}
+
+.carouselScrollButtonContainerR {
+  width: 40px;
+  height: 255px;
+  display: flex;
+  padding: 0 10px 0 0;
+}
+
+.carouselScrollButton {
+  margin: auto;
+  width: 36px;
+  height: auto;
+  display: block;
+}
+
+.carouselItemBox {
+  height: 255px;
+  width: 160px;
+}
+
+.carouselPics {
+  height: 160px;
+  width: auto;
+  display: block;
+  margin: 0 auto 0 auto;
+}
+
+.carouselPrice {
+  color: #B12704;
+  margin: 5px 0 5px 0;
+}
+
+.carouselName {
+  color: #0066C0;
+  margin: 5px 0 5px 0;
+}
+
+.carouselRating {
+  margin: 0px;
+}
