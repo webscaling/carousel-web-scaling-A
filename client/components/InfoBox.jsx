@@ -1,13 +1,34 @@
 import React from 'react';
+import { startSession } from 'mongoose';
 
 const InfoBox = (props) => {
+  let rating = Math.round(props.item.Rating * 2) / 2;
+  let stars = [0, 0, 0, 0, 0];
+
+  stars.forEach((element, index) => {
+    if (rating === index + 1.5) {
+      stars[index] = .5;
+    } else if (rating >= index + 1) {
+      stars[index] = 1;
+    }
+  });
+
 
   return (
     <div className="carouselItemBox">
       <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo[0]}></img>
       <p className='carouselName'
         onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName}</p>
-      <p className="carouselRating">picture of stars {props.item.Rating} 16</p>
+      {stars.map((star, index) => {
+        if (star === 1) {
+          return (<p key={index} className="carouselStar fas fa-star"></p>);
+        } else if (star === .5) {
+          return (<p key={index} className="carouselStar fas fa-star-half-alt"></p>);
+        } else {
+          return (<p key={index} className="carouselStar far fa-star"></p>);
+        }
+      })}
+      <p className="carouselRating">16</p>
       {/* add link to db for number of comments */}
       <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>
     </div>
