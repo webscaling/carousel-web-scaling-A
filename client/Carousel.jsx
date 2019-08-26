@@ -39,7 +39,7 @@ class Carousel extends Component {
   getCategory() {
     axios.get('/item', {
       params: {
-        ProductId: 5 //replace with global ID ////////////////////////////////
+        ProductId: 17 //replace with global ID ////////////////////////////////
       }
     })
       .then(data => {
