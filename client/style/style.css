@@ -69,7 +69,8 @@
 
 .carouselItemBox {
   height: 255px;
-  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
 }
 
 .carouselPics {
@@ -89,6 +90,8 @@
 }
 
 .carouselName {
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-size: 13px;
   color: #0066C0;
   margin: 5px 0 5px 0;
   cursor: pointer;
@@ -96,20 +99,26 @@
 
 .carouselName:hover {
   color: #CC6600;
-  margin: 5px 0 5px 0;
   text-decoration: underline;
-  cursor: pointer;
 }
 
 .carouselRating {
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-size: 13px;
   color: #0066C0;
-  margin: 0px;
+  margin: 0 18px 0 0;
   cursor: pointer;
+  text-align: right;
+  width: 10%;
+  float: right;
 }
 
 .carouselRating:hover {
   color: #CC6600;
-  text-decoration: underline;
-  margin: 0px;
+}
+
+.carouselStar {
+  color: #FFCE00;
+  margin: 0 5px 0 0;
   cursor: pointer;
 }
