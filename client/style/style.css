@@ -53,6 +53,7 @@
   width: 36px;
   height: auto;
   display: block;
+  cursor: pointer;
 }
 
 .carouselArrowGlow {
@@ -63,6 +64,7 @@
   border-radius: 4px;
   border: 1px solid #FF5000;
   box-shadow: 0px 0px 5px 1px #CC6600;
+  cursor: pointer;
 }
 
 .carouselItemBox {
@@ -77,24 +79,29 @@
   width: auto;
   display: block;
   margin: 0 auto 0 auto;
+  cursor: pointer;
 }
 
 .carouselPrice {
   color: #B12704;
   margin: 5px 0 5px 0;
+  cursor: pointer;
 }
 
 .carouselName {
   color: #0066C0;
   margin: 5px 0 5px 0;
+  cursor: pointer;
 }
 
-.carouselNameHover {
+.carouselName:hover {
   color: #CC6600;
   margin: 5px 0 5px 0;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .carouselRating {
   margin: 0px;
+  cursor: pointer;
 }

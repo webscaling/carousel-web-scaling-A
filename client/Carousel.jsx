@@ -23,8 +23,7 @@ class Carousel extends Component {
         rightHover: 'https://shazamazon.s3.us-east-2.amazonaws.com/Carousel+Arrows/rightArrowHover.jpg',
         leftRecentClick: 'https://shazamazon.s3.us-east-2.amazonaws.com/Carousel+Arrows/leftArrowRecentlyClicked.jpg',
         rightRecentClick: 'https://shazamazon.s3.us-east-2.amazonaws.com/Carousel+Arrows/rightArrowRecentlyClicked.jpg'
-      },
-      nameHover: 'carouselName'
+      }
     };
   }
 
@@ -132,15 +131,6 @@ class Carousel extends Component {
       }
     });
   }
-  
-  carouselNameHover (event, name) {
-    this.setState({ nameHover: name});
-  }
-  
-  carouselName (event, name) {
-    this.setState({ nameHover: name });
-  }
-  
   /* ////////////////////////////// Global Functions ////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////*/
 
@@ -169,8 +159,6 @@ class Carousel extends Component {
                 setGlobal={this.setGlobal.bind(this)}
                 item={item} 
                 key={index}
-                carouselNameHover={ this.carouselNameHover.bind(this)}
-                carouselName={this.carouselName.bind(this)}
                 nameHover={this.state.nameHover}
               />
             );
