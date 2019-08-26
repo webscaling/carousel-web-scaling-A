@@ -102,6 +102,14 @@
 }
 
 .carouselRating {
+  color: #0066C0;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.carouselRating:hover {
+  color: #CC6600;
+  text-decoration: underline;
   margin: 0px;
   cursor: pointer;
 }
