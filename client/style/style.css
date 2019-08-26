@@ -1,13 +1,28 @@
 /* stretch goal - add items to carousel if screen is wide enough 
-   stretch goal -  have 
-   loading gif
+   stretch goal - add ... after name is certain amout of characters
 */
+
+/* .carouselTitleContainer {
+  display: flex;
+  flex-direction: row;
+} */
 
 .carouselTitle {
   color: #CC6600;
   font-family: verdana,arial,helvetica,sans-serif;
   font-size: 16px;
   margin: 0 0 20px 10px;
+  width: 60%;
+  float: left;
+}
+
+#carouselPgCount {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  text-align: right;
+  width: 20%;
+  float: right;
+  margin: 10px 15px 10px 0;
 }
 
 .carouselContainer {
@@ -50,14 +65,15 @@
   box-shadow: 0px 0px 5px 1px #CC6600;
 }
 
-
 .carouselItemBox {
   height: 255px;
   width: 160px;
 }
 
 .carouselPics {
+  object-fit: scale-down;
   height: 160px;
+  max-width: 160px;
   width: auto;
   display: block;
   margin: 0 auto 0 auto;
@@ -71,6 +87,12 @@
 .carouselName {
   color: #0066C0;
   margin: 5px 0 5px 0;
+}
+
+.carouselNameHover {
+  color: #CC6600;
+  margin: 5px 0 5px 0;
+  text-decoration: underline;
 }
 
 .carouselRating {

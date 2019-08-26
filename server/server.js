@@ -23,8 +23,8 @@ app.post('/item', (req, res) => {
   item.save()
     .then(result => {
       res.status(201).send({
-        message: 'handling POST requests to /item'
-        // createdProduct: result
+        message: 'handling POST requests to /item',
+        createdProduct: result
       });
     })
     .catch(err => {
@@ -34,11 +34,10 @@ app.post('/item', (req, res) => {
 });
 
 app.get('/item', (req, res) => {
-  // console.log(req.query.category);
-  carouselItem.find(req.query.category === undefined ? null : { category: req.query.category })
+  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } )
     .exec()
     .then(doc => {
-      console.log(doc);
+      console.log('get request successful');
       res.status(200).send(doc);
     })
     .catch(err => {
