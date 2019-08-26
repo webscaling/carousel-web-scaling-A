@@ -89,7 +89,7 @@
   margin: 5px 0 5px 0;
 }
 
-.carouselNameHover {
+.carouselName:hover {
   color: #CC6600;
   margin: 5px 0 5px 0;
   text-decoration: underline;
