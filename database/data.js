@@ -40,7 +40,7 @@ const data = [
   {
     "ProductId": 5,
     "Category": "quidditch",
-    "ItemName": "MAYBO SPORTS Wiitin Bearing Replaceable Harry Potter Fidget Spinner with Spare Bearing and Tools - The Original Golden Snitch Used in Quidditch Made by Metal by MAYBO SPORTS'",
+    "ItemName": "MAYBO SPORTS Wiitin Bearing Replaceable Harry Potter Fidget Spinner with Spare Bearing and Tools - The Original Golden Snitch Used in Quidditch Made by Metal by MAYBO SPORTS",
     "Price": 11.99,
     "Rating": 4,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/quidditch/MAYBO+SPORTS+Wiitin+Bearing+Replaceable+Harry+Potter+Fidget+Spinner+with+Spare+Bearing+and+Tools%2C+The+Original+Golden+Snitch+Used+in+Quidditch+Made+by+Metal+by+MAYBO+SPORTS/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/quidditch/MAYBO+SPORTS+Wiitin+Bearing+Replaceable+Harry+Potter+Fidget+Spinner+with+Spare+Bearing+and+Tools%2C+The+Original+Golden+Snitch+Used+in+Quidditch+Made+by+Metal+by+MAYBO+SPORTS/view1.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/quidditch/MAYBO+SPORTS+Wiitin+Bearing+Replaceable+Harry+Potter+Fidget+Spinner+with+Spare+Bearing+and+Tools%2C+The+Original+Golden+Snitch+Used+in+Quidditch+Made+by+Metal+by+MAYBO+SPORTS/view2.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/quidditch/MAYBO+SPORTS+Wiitin+Bearing+Replaceable+Harry+Potter+Fidget+Spinner+with+Spare+Bearing+and+Tools%2C+The+Original+Golden+Snitch+Used+in+Quidditch+Made+by+Metal+by+MAYBO+SPORTS/view3.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/quidditch/MAYBO+SPORTS+Wiitin+Bearing+Replaceable+Harry+Potter+Fidget+Spinner+with+Spare+Bearing+and+Tools%2C+The+Original+Golden+Snitch+Used+in+Quidditch+Made+by+Metal+by+MAYBO+SPORTS/view4.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/quidditch/MAYBO+SPORTS+Wiitin+Bearing+Replaceable+Harry+Potter+Fidget+Spinner+with+Spare+Bearing+and+Tools%2C+The+Original+Golden+Snitch+Used+in+Quidditch+Made+by+Metal+by+MAYBO+SPORTS/view5.jpg'],
@@ -166,7 +166,7 @@ const data = [
   {
     "ProductId": 19,
     "Category": "spells",
-    "ItemName": "'The Green Witch: Your Complete Guide to the Natural Magic of Herbs, Flowers, Essential Oils, and More'",
+    "ItemName": "The Green Witch: Your Complete Guide to the Natural Magic of Herbs, Flowers, Essential Oils, and More",
     "Price": 13.64,
     "Rating": 4.7,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/thegreenwitch/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/thegreenwitch/view1.jpg'],
@@ -184,7 +184,7 @@ const data = [
   {
     "ProductId": 21,
     "Category": "spells",
-    "ItemName": "Witchcraft: A Handbook of Magic Spells and Potions (Mystical Handbook) ",
+    "ItemName": "Witchcraft: A Handbook of Magic Spells and Potions (Mystical Handbook)",
     "Price": 10.69,
     "Rating": 3.6,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/witchcrafthandbook/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/witchcrafthandbook/view1.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/witchcrafthandbook/view2.jpg'],
@@ -193,7 +193,7 @@ const data = [
   {
     "ProductId": 22,
     "Category": "spells",
-    "ItemName": "The Little Black Book of Nasty Spells ",
+    "ItemName": "The Little Black Book of Nasty Spells",
     "Price": 25,
     "Rating": 5,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/nastyspells/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/nastyspells/view1.jpg'],
@@ -220,7 +220,7 @@ const data = [
   {
     "ProductId": 25,
     "Category": "spells",
-    "ItemName": "'The Book of Shadows: White, Red and Black Magic Spells",
+    "ItemName": "The Book of Shadows: White, Red and Black Magic Spells",
     "Price": 12.29,
     "Rating": 4.1,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/bookofshadows/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/bookofshadows/view1.jpg'],
@@ -265,7 +265,7 @@ const data = [
   {
     "ProductId": 30,
     "Category": "spells",
-    "ItemName": "The Book of Forbidden Knowledge: Black Magic, Superstition, Charms, and Divination'",
+    "ItemName": "The Book of Forbidden Knowledge: Black Magic, Superstition, Charms, and Divination",
     "Price": 5.9,
     "Rating": 3.7,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/forbiddenknowledge/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/spellbooks/forbiddenknowledge/view1.jpg'],
@@ -409,7 +409,7 @@ const data = [
   {
     "ProductId": 46,
     "Category": "wands",
-    "ItemName": "Harry Potter, Wizard Training Wand - 11 SPELLS To Cast! Official Toy Wand with Lights & Sounds'",
+    "ItemName": "Harry Potter, Wizard Training Wand - 11 SPELLS To Cast! Official Toy Wand with Lights & Sounds",
     "Price": 20.49,
     "Rating": 4.2,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view1.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view2.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view3.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view4.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view5.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view6.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view7.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view8.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view9.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view10.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view11.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view12.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/harrypotter/view13.jpg'],
@@ -427,7 +427,7 @@ const data = [
   {
     "ProductId": 48,
     "Category": "wands",
-    "ItemName": "'The Elder Wand, The Wand of Professor Dumbledore",
+    "ItemName": "The Elder Wand, The Wand of Professor Dumbledore",
     "Price": 37.5,
     "Rating": 4.8,
     "Photo": ['https://shazamazon.s3.us-east-2.amazonaws.com/wands/elder/view0.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/elder/view1.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/elder/view2.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/elder/view3.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/elder/view4.jpg', 'https://shazamazon.s3.us-east-2.amazonaws.com/wands/elder/view5.jpg'],
@@ -953,7 +953,7 @@ const toDb = (obj => {
     method: 'post',
     url: 'http://localhost:4444/item/', 
     data: obj
-})
+  })
     .then(data => 
       console.log('success!')
     )

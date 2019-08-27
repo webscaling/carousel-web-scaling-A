@@ -16,9 +16,9 @@ app.post('/item', (req, res) => {
     ItemName: req.body.ItemName,
     Price: req.body.Price,
     Rating: req.body.Rating,
+    RatingCount: Math.floor(Math.random() * 20) + 1,
     Category: req.body.Category,
-    Photo: req.body.Photo,
-    Video: req.body.Video
+    Photo: req.body.Photo[0],
   });
   item.save()
     .then(result => {
