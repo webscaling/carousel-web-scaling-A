@@ -80,23 +80,52 @@ class Carousel extends Component {
       if (this.state.indexOnScreen === this.state.itemData.length - 1) {
         return;
       }
+      let count = this.state.numOfItemsOnScreen - 1;
 
-      this.setState({itemsRendered: loading }, () =>
-        this.setState({ itemsRendered: this.state.itemData[this.state.indexOnScreen + 1]}, () => {
-          this.setState({ indexOnScreen: this.state.indexOnScreen + 1});
-        })
-      );
+      const cascade = () => {
+        this.setState({ itemsRendered: loading }, () => {
+          let currentRender = this.state.itemsRendered;
+          currentRender.splice(count, 1, this.state.itemData[this.state.indexOnScreen + 1][count]);
+          count--;
+          this.setState({ itemsRendered: currentRender}, () => {
+            setTimeout(() => {
+              if (count >= 0 ) {
+                cascade();
+              } else {
+                this.setState({ indexOnScreen: this.state.indexOnScreen + 1 });
+              }
+            }, 15);
+          });
+        });
+      };
+
+      cascade();
 
     } else {
       if (this.state.indexOnScreen === 0) {
         return;
       }
 
-      this.setState({itemsRendered: loading }, () =>
-        this.setState({ itemsRendered: this.state.itemData[this.state.indexOnScreen - 1] }, () => {
-          this.setState({ indexOnScreen: this.state.indexOnScreen - 1 });
-        })
-      );
+      let count = 0;
+
+      const cascade = () => {
+        this.setState({ itemsRendered: loading }, () => {
+          let currentRender = this.state.itemsRendered;
+          currentRender.splice(count, 1, this.state.itemData[this.state.indexOnScreen - 1][count]);
+          count++;
+          this.setState({ itemsRendered: currentRender }, () => {
+            setTimeout(() => {
+              if (count < this.state.numOfItemsOnScreen) {
+                cascade();
+              } else {
+                this.setState({ indexOnScreen: this.state.indexOnScreen - 1 });
+              }
+            }, 15);
+          });
+        });
+      };
+
+      cascade();
     }
   }
 

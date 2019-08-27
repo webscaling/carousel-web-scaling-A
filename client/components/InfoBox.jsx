@@ -16,7 +16,7 @@ const InfoBox = (props) => {
 
   return (
     <div className="carouselItemBox">
-      <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo[0]}></img>
+      <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
       <p className='carouselName'
         onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName}</p>
       {stars.map((star, index) => {
@@ -28,8 +28,7 @@ const InfoBox = (props) => {
           return (<p key={index} className="carouselStar far fa-star"></p>);
         }
       })}
-      <p className="carouselRating">16</p>
-      {/* add link to db for number of comments */}
+      <p className="carouselRating">{props.item.RatingCount}</p>
       <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>
     </div>
   );

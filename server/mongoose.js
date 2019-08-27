@@ -14,9 +14,9 @@ const schema = new mongoose.Schema({
   ItemName: String,
   Price: Number,
   Rating: Number,
+  RatingCount: Number,
   Category: String,
-  Photo: Array,
-  Video: String
+  Photo: String
 }, {collection: 'carousel-all-data' });
 
 const carouselItem = mongoose.model('carouselItem', schema);
