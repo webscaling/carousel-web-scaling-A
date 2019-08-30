@@ -37,7 +37,6 @@ app.get('/item', (req, res) => {
   carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } )
     .exec()
     .then(doc => {
-      console.log(doc)
       console.log('get request successful');
       res.status(200).send(doc);
     })
