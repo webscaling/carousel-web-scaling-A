@@ -8,6 +8,11 @@ const port = 4444;
 
 app.use(express.static('client'));
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.post('/item', (req, res) => {
   const item = new carouselItem({
@@ -38,7 +43,6 @@ app.get('/item', (req, res) => {
     .exec()
     .then(doc => {
       console.log('get request successful');
-      res.set({ 'Access-Control-Allow-Origin': '*' });
       res.status(200).send(doc);
     })
     .catch(err => {
