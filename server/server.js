@@ -38,6 +38,7 @@ app.get('/item', (req, res) => {
     .exec()
     .then(doc => {
       console.log('get request successful');
+      res.set({ 'Access-Control-Allow-Origin': '*' });
       res.status(200).send(doc);
     })
     .catch(err => {
