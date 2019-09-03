@@ -10,7 +10,8 @@
   "scripts": {
     "compile": "webpack --watch",
     "start": "nodemon server/server.js --open",
-    "live": "live-server --open=client/index.html",
+    "live": "pm2 start server/server.js",
+    "save": "pm2 save",
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "dependencies": {

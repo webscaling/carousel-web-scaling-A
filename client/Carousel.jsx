@@ -50,7 +50,7 @@ class Carousel extends Component {
   }
 
   getCategory() {
-    axios.get('/item', {
+    axios.get('http://18.191.49.198/item', {
       params: {
         ProductId: 5 //replace with global ID ////////////////////////////////
       }
@@ -67,7 +67,7 @@ class Carousel extends Component {
   }
 
   getAllFromCategory(event, category) {
-    axios.get('/item', { 
+    axios.get('http://18.191.49.198/item', { 
       params: {
         Category: category
       }
