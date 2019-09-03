@@ -24,7 +24,7 @@ const InfoBox = (props) => {
       <div className="carouselItemBox">
         <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
         <p className='carouselName'
-          onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName}</p>
+          onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
         {stars.map((star, index) => {
           if (star === 1) {
             return (<p key={index} className="carouselStar fas fa-star"></p>);
