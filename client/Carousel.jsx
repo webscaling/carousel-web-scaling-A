@@ -38,9 +38,7 @@ class Carousel extends Component {
   }
 
   setGlobalId (event) {
-    console.log(event.detail);
     this.setState({ globalId: event.detail, numOfItemsOnScreen: 0, itemData: [], indexOnScreen: 0, itemsRendered: [] }, () => {
-      console.log('hello2');
       this.getLoading();
     });
   }
@@ -55,7 +53,6 @@ class Carousel extends Component {
     }
 
     this.setState({ itemData: [], itemsRendered: result }, () => {
-      console.log('hello3');
       this.getCategory();
     });
   }
@@ -67,9 +64,7 @@ class Carousel extends Component {
       }
     })
       .then(data => {
-        console.log('hello4');
         this.setState({ globalCategory: data.data[0].Category }, () => {
-          console.log('hello5');
           this.getAllFromCategory(event, this.state.globalCategory);
         });
       })
@@ -85,9 +80,7 @@ class Carousel extends Component {
       }
     })
       .then(data => {
-        console.log('hello6');
         this.setState({ itemData: data.data}, () => {
-          console.log('hello7');
           this.getWidth();
         });
       })
@@ -109,7 +102,6 @@ class Carousel extends Component {
     let flatCopyForView = this.state.itemData.slice().flat();
     let result = [];
     let renderThis = [];
-    console.log('hello1');
     copy = copy.flat();
     if (copy.indexOf(null) > 0) {
       copy.splice(copy.indexOf(null));
