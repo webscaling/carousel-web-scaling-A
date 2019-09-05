@@ -238,6 +238,7 @@ class Carousel extends Component {
   setGlobal(e, id) {
     const event = new CustomEvent('clickedProduct', { detail: id });
     window.dispatchEvent(event);
+    
   }
 
   render() {

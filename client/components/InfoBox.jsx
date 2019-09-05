@@ -22,20 +22,24 @@ const InfoBox = (props) => {
 
     return (
       <div className="carouselItemBox">
-        <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
-        <p className='carouselName'
-          onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
+        <a href='#'>
+          <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
+          <p className='carouselName'
+            onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
+        </a>
         {stars.map((star, index) => {
           if (star === 1) {
-            return (<p key={index} className="carouselStar fas fa-star"></p>);
+            return (<a href='#reviewsApp'><p key={index} className="carouselStar fas fa-star"></p></a>);
           } else if (star === .5) {
-            return (<p key={index} className="carouselStar fas fa-star-half-alt"></p>);
+            return (<a href='#reviewsApp'><p key={index} className="carouselStar fas fa-star-half-alt"></p></a>);
           } else {
-            return (<p key={index} className="carouselStar far fa-star"></p>);
+            return (<a href='#reviewsApp'><p key={index} className="carouselStar far fa-star"></p></a>);
           }
         })}
-        <p className="carouselRating">{props.item.RatingCount}</p>
-        <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>
+        <a href='#reviewsApp'><p className="carouselRating">{props.item.RatingCount}</p></a>
+        <a href='#'>
+          <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>  
+        </a>
       </div>
     );
   }
