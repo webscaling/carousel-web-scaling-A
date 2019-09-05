@@ -7,6 +7,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      globalId: 8,
       globalCategory: '',
       itemData: [],
       indexOnScreen: 0,
@@ -31,11 +32,20 @@ class Carousel extends Component {
   ///////////////////////////////////////////////////////////////////////////////*/
 
   componentDidMount() {
-    this.getLoading(null, this.getCategory.bind(this));
+    this.getLoading();
     window.addEventListener('resize', this.getWidth);
+    window.addEventListener('clickedProduct', this.setGlobalId.bind(this));
   }
 
-  getLoading(event, func) {
+  setGlobalId (event) {
+    console.log(event.detail);
+    this.setState({ globalId: event.detail, numOfItemsOnScreen: 0, itemData: [], indexOnScreen: 0, itemsRendered: [] }, () => {
+      console.log('hello2');
+      this.getLoading();
+    });
+  }
+
+  getLoading() {
     //Will pass other functions through for left/right click load
     let count = Math.floor((window.innerWidth + 50) / 240);
     let result = [];
@@ -45,21 +55,23 @@ class Carousel extends Component {
     }
 
     this.setState({ itemData: [], itemsRendered: result }, () => {
-      func();
+      console.log('hello3');
+      this.getCategory();
     });
   }
 
   getCategory() {
     axios.get('http://18.191.49.198/item', {
       params: {
-        ProductId: 5 //replace with global ID ////////////////////////////////
+        ProductId: this.state.globalId 
       }
     })
       .then(data => {
-        setTimeout(() =>
-          this.setState({ globalCategory: data.data[0].Category }, () => {
-            this.getAllFromCategory(event, this.state.globalCategory);
-          }), 200);
+        console.log('hello4');
+        this.setState({ globalCategory: data.data[0].Category }, () => {
+          console.log('hello5');
+          this.getAllFromCategory(event, this.state.globalCategory);
+        });
       })
       .catch(err => {
         console.error(err);
@@ -73,7 +85,9 @@ class Carousel extends Component {
       }
     })
       .then(data => {
+        console.log('hello6');
         this.setState({ itemData: data.data}, () => {
+          console.log('hello7');
           this.getWidth();
         });
       })
@@ -95,7 +109,7 @@ class Carousel extends Component {
     let flatCopyForView = this.state.itemData.slice().flat();
     let result = [];
     let renderThis = [];
-
+    console.log('hello1');
     copy = copy.flat();
     if (copy.indexOf(null) > 0) {
       copy.splice(copy.indexOf(null));
@@ -229,8 +243,9 @@ class Carousel extends Component {
   /* ////////////////////////////// Global Functions ////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////////*/
 
-  setGlobal(event, id) {
-    console.log(`set global productId to: ${id}`);
+  setGlobal(e, id) {
+    const event = new CustomEvent('clickedProduct', { detail: id });
+    window.dispatchEvent(event);
   }
 
   render() {
