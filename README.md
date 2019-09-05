@@ -1,6 +1,6 @@
 # Shazamazon Carousel
 
-Built using React, the Shazamazon Carousel component is one part of a larger Amazon clone. The component is able to render multiple item pictures, names, review statistics, and prices from items in the same category as the main item being viewed.  The carousel component is responsive to changes in the window's width.  While adjusting the window size, the page populates enough items to fit in the allotted space, updates the total page count, and maintains the current items on screen while the storage matrix is reconfigured. The coursousel component renders a loading gif while new data is being fetched.
+Built using React, the Shazamazon Carousel component is one part of a larger Amazon clone. The component is able to render multiple item pictures, names, review statistics, and prices from items in the same category as the main item being viewed.  The carousel component is responsive to changes in the window's width.  While adjusting the window size, the page populates enough items to fit in the allotted space, updates the total page count, and maintains the current items on screen while the storage matrix is reconfigured. The carousel component renders a loading gif while new data is being fetched.
 
 ## Stack
 
