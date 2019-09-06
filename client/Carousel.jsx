@@ -37,7 +37,6 @@ class Carousel extends Component {
     window.addEventListener('clickedProduct', this.setGlobalId.bind(this));
     window.addEventListener('reviewUpdate', this.updateReview.bind(this));
   }
-
   updateReview(event) {
     axios.put('http://18.191.49.198/item', {
       ProductId: this.state.globalId,
@@ -251,7 +250,19 @@ class Carousel extends Component {
   setGlobal(e, id) {
     const event = new CustomEvent('clickedProduct', { detail: id });
     window.dispatchEvent(event);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 70);
   }
+
+  setReview (e, id) {
+    const event = new CustomEvent('clickedProduct', { detail: id });
+    const myElement = document.getElementById('reviewsApp');
+    const topPos = myElement.offsetTop;
+
+    window.dispatchEvent(event);
+    window.scrollTo(0, topPos);
+  } 
 
   render() {
     return (
@@ -280,6 +291,7 @@ class Carousel extends Component {
               return (
                 <InfoBox 
                   setGlobal={this.setGlobal.bind(this)}
+                  setReview={this.setReview.bind(this)}
                   item={item} 
                   key={index}
                   nameHover={this.state.nameHover}
