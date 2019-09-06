@@ -7,7 +7,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      globalId: 8,
+      globalId: 66,
       globalCategory: '',
       itemData: [],
       indexOnScreen: 0,
