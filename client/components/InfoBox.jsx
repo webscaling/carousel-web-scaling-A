@@ -1,5 +1,6 @@
 import React from 'react';
-import { startSession } from 'mongoose';
+import ReactTooltip from 'react-tooltip';
+// import { startSession } from 'mongoose';
 
 const InfoBox = (props) => {
   
@@ -20,10 +21,21 @@ const InfoBox = (props) => {
       }
     });
 
+    let splitLine = props.item.ItemName.split(' ');
+    let lineName = '';
+    let i = splitLine.length;
+
+    while (i >= 0) {
+      lineName += splitLine.splice(0, 4).join(' ') + '<br />';
+      i = i - 4;
+    }
+
     return (
       <div className="carouselItemBox">
-        <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
-        <p className='carouselName' onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
+        <ReactTooltip className="carouselToolTip" multiline={true} place="top" effect="solid" delayShow={1500} offset={{ bottom: 50 }} />
+
+        <img data-tip={lineName} className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
+        <p data-tip={lineName} className='carouselName' onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
         <div className="carouselReviewContainer" onClick={() => props.setReview(event, props.item.ProductId)}>
           {stars.map((star, index) => {
             if (star === 1) {
