@@ -22,24 +22,20 @@ const InfoBox = (props) => {
 
     return (
       <div className="carouselItemBox">
-        <a href='#'>
-          <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
-          <p className='carouselName'
-            onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
-        </a>
+        <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
+        <p className='carouselName' onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
+        
         {stars.map((star, index) => {
           if (star === 1) {
-            return (<a href='#reviewsApp' key={index}><p className="carouselStar fas fa-star" onClick={() => props.setGlobal(event, props.item.ProductId)}></p></a>);
+            return (<p key={index} className="carouselStar fas fa-star" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
           } else if (star === .5) {
-            return (<a href='#reviewsApp' key={index}><p className="carouselStar fas fa-star-half-alt" onClick={() => props.setGlobal(event, props.item.ProductId)}></p></a>);
+            return (<p key={index} className="carouselStar fas fa-star-half-alt" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
           } else {
-            return (<a href='#reviewsApp' key={index}><p className="carouselStar far fa-star" onClick={() => props.setGlobal(event, props.item.ProductId)}></p></a>);
+            return (<p key={index} className="carouselStar far fa-star" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
           }
         })}
-        <a href='#reviewsApp'><p className="carouselRating">{props.item.RatingCount}</p></a>
-        <a href='#'>
-          <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>  
-        </a>
+        <p className="carouselRating" onClick={() => props.setReview(event, props.item.ProductId)}>{props.item.RatingCount}</p>
+        <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>  
       </div>
     );
   }
