@@ -24,18 +24,22 @@ const InfoBox = (props) => {
       <div className="carouselItemBox">
         <img className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
         <p className='carouselName' onClick={() => props.setGlobal(event, props.item.ProductId)}>{props.item.ItemName.length > 70 ? props.item.ItemName.slice(0, 70) + '...' : props.item.ItemName}</p>
-        
-        {stars.map((star, index) => {
-          if (star === 1) {
-            return (<p key={index} className="carouselStar fas fa-star" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
-          } else if (star === .5) {
-            return (<p key={index} className="carouselStar fas fa-star-half-alt" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
-          } else {
-            return (<p key={index} className="carouselStar far fa-star" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
-          }
-        })}
-        <p className="carouselRating" onClick={() => props.setReview(event, props.item.ProductId)}>{props.item.RatingCount}</p>
-        <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>  
+        <div className="carouselReviewContainer" onClick={() => props.setReview(event, props.item.ProductId)}>
+          {stars.map((star, index) => {
+            if (star === 1) {
+              return (<p key={index} className="carouselStar fas fa-star" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
+            } else if (star === .5) {
+              return (<p key={index} className="carouselStar fas fa-star-half-alt" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
+            } else {
+              return (<p key={index} className="carouselStar far fa-star" onClick={() => props.setReview(event, props.item.ProductId)}></p>);
+            }
+          })}
+          <p className="carouselRating" onClick={() => props.setReview(event, props.item.ProductId)}>{props.item.RatingCount}</p>
+        </div>
+        <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}
+          <img className="carouselLogo" src='https://cart-icons.s3.us-east-2.amazonaws.com/shazam.png'></img>
+          <span className="carouselShazam">SHAZAM</span>
+        </p>  
       </div>
     );
   }

@@ -88,9 +88,12 @@
 }
 
 .carouselPrice {
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-size: 13px;
   color: #B12704;
   margin: 5px 0 5px 0;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .carouselName {
@@ -106,11 +109,15 @@
   text-decoration: underline;
 }
 
+.carouselReviewContainer {
+  cursor: pointer;
+}
+
 .carouselRating {
   font-family: verdana,arial,helvetica,sans-serif;
   font-size: 13px;
   color: #0066C0;
-  margin: 0 18px 0 0;
+  margin: 0 25px 0 0;
   cursor: pointer;
   text-align: right;
   width: 10%;
@@ -125,4 +132,14 @@
   color: #FFCE00;
   margin: 0 5px 0 0;
   cursor: pointer;
+}
+
+.carouselShazam {
+  color: #41a1dd;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.carouselLogo {
+  vertical-align: middle;
 }
