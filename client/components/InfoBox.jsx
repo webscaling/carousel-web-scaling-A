@@ -34,9 +34,7 @@ const InfoBox = (props) => {
           }
         })}
         <p href='#reviewsApp' className="carouselRating">{props.item.RatingCount}</p>
-        <a href='#'>
-          <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>  
-        </a>
+        <p href='#' className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}</p>  
       </div>
     );
   }
