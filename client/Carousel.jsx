@@ -35,6 +35,19 @@ class Carousel extends Component {
     this.getLoading();
     window.addEventListener('resize', this.getWidth);
     window.addEventListener('clickedProduct', this.setGlobalId.bind(this));
+    window.addEventListener('reviewUpdate', this.updateReview);
+  }
+
+  updateReview(event) {
+    axios.put('http://18.191.49.198/item', {
+      ProductId: this.state.globalId,
+      Rating: event.detail.reviewsAvg,
+      RatingCount: event.detail.numReviews
+    })
+      .then()
+      .catch(err => {
+        console.err(err);
+      });
   }
 
   setGlobalId (event) {
@@ -238,7 +251,6 @@ class Carousel extends Component {
   setGlobal(e, id) {
     const event = new CustomEvent('clickedProduct', { detail: id });
     window.dispatchEvent(event);
-    
   }
 
   render() {
