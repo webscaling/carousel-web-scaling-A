@@ -29,11 +29,11 @@ const InfoBox = (props) => {
         </a>
         {stars.map((star, index) => {
           if (star === 1) {
-            return (<a href='#reviewsApp'><p key={index} className="carouselStar fas fa-star"></p></a>);
+            return (<a href='#reviewsApp' key={index}><p className="carouselStar fas fa-star" onClick={() => props.setGlobal(event, props.item.ProductId)}></p></a>);
           } else if (star === .5) {
-            return (<a href='#reviewsApp'><p key={index} className="carouselStar fas fa-star-half-alt"></p></a>);
+            return (<a href='#reviewsApp' key={index}><p className="carouselStar fas fa-star-half-alt" onClick={() => props.setGlobal(event, props.item.ProductId)}></p></a>);
           } else {
-            return (<a href='#reviewsApp'><p key={index} className="carouselStar far fa-star"></p></a>);
+            return (<a href='#reviewsApp' key={index}><p className="carouselStar far fa-star" onClick={() => props.setGlobal(event, props.item.ProductId)}></p></a>);
           }
         })}
         <a href='#reviewsApp'><p className="carouselRating">{props.item.RatingCount}</p></a>

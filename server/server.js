@@ -10,6 +10,7 @@ app.use(express.static('client'));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -50,5 +51,19 @@ app.get('/item', (req, res) => {
       res.status(500).send({ error: err });
     });
 });
+
+app.put('/item', (req, res) => {
+  carouselItem.updateOne({ ProductId: req.body.ProductId }, { Rating: req.body.Rating, RatingCount: req.body.RatingCount })
+    .exec()
+    .then(() => {
+      res.status(200).end();
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
+
+
+
 
 app.listen(port, () => { console.log(`we are listening from port ${port}`); });
