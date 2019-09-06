@@ -7,6 +7,10 @@
   flex-direction: row;
 } */
 
+#carousel {
+  margin-bottom: 60px;
+}
+
 .carouselTitle {
   color: #CC6600;
   font-family: verdana,arial,helvetica,sans-serif;

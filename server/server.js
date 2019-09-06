@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { carouselItem } = require('./mongoose.js');
+const { carouselItem } = require('../database/mongoose.js');
 const mongoose = require('mongoose');
 const app = express();
 const port = 4444;
@@ -8,6 +8,12 @@ const port = 4444;
 
 app.use(express.static('client'));
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.post('/item', (req, res) => {
   const item = new carouselItem({
@@ -16,9 +22,9 @@ app.post('/item', (req, res) => {
     ItemName: req.body.ItemName,
     Price: req.body.Price,
     Rating: req.body.Rating,
+    RatingCount: Math.floor(Math.random() * 20) + 1,
     Category: req.body.Category,
-    Photo: req.body.Photo,
-    Video: req.body.Video
+    Photo: req.body.Photo[0],
   });
   item.save()
     .then(result => {
@@ -45,5 +51,19 @@ app.get('/item', (req, res) => {
       res.status(500).send({ error: err });
     });
 });
+
+app.put('/item', (req, res) => {
+  carouselItem.updateOne({ ProductId: req.body.ProductId }, { Rating: req.body.Rating, RatingCount: req.body.RatingCount })
+    .exec()
+    .then(() => {
+      res.status(200).end();
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
+
+
+
 
 app.listen(port, () => { console.log(`we are listening from port ${port}`); });
