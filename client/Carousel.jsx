@@ -35,7 +35,7 @@ class Carousel extends Component {
     this.getLoading();
     window.addEventListener('resize', this.getWidth);
     window.addEventListener('clickedProduct', this.setGlobalId.bind(this));
-    window.addEventListener('reviewUpdate', this.updateReview);
+    window.addEventListener('reviewUpdate', this.updateReview.bind(this));
   }
 
   updateReview(event) {
