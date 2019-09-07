@@ -32,6 +32,15 @@ const InfoBox = (props) => {
       }
     });
 
+    let splitLine = props.item.ItemName.split(' ');
+    let lineName = '';
+    let i = splitLine.length;
+
+    while (i >= 0) {
+      lineName += splitLine.splice(0, 4).join(' ') + '<br />';
+      i = i - 4;
+    }
+
     return (
       <div className="carouselItemBox">
         <img alt=":(" title={props.item.ItemName} className="carouselPics" onClick={() => props.setGlobal(event, props.item.ProductId)} src={props.item.Photo}></img>
