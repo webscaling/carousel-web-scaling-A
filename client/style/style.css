@@ -143,14 +143,3 @@
 .carouselLogo {
   vertical-align: middle;
 }
-
-.carouselToolTip {
-  color: black !important;
-<<<<<<< HEAD
-  background-color: #E8E8E8 !important;
-=======
-  background-color: lightgray !important;
-  visibility: visible !important;
->>>>>>> 226ac859f7c19212bffa058b3b8f276d718e8427
-  opacity: 1 !important
-}
