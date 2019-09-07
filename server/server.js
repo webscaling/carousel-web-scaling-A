@@ -39,6 +39,8 @@ app.post('/item', (req, res) => {
     });
 });
 
+
+
 app.get('/item', (req, res) => {
   carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } )
     .exec()
@@ -50,6 +52,31 @@ app.get('/item', (req, res) => {
       console.error(err);
       res.status(500).send({ error: err });
     });
+});
+
+app.put('/seed', (req, res) => {
+  const ratingCount = req.body.length;
+  let reviewsArray = [];
+  let avgReviews;
+  
+  req.body.forEach(review => {
+    reviewsArray.push(review.rating);
+  });
+
+  avgReviews = reviewsArray.reduce((acc, num)=> {
+    return acc + num;
+  });
+  avgReviews = (avgReviews / ratingCount).toFixed(1);
+
+  carouselItem.updateOne({ ProductId: req.body[0].itemID }, { Rating: avgReviews, RatingCount: ratingCount })
+    .exec()
+    .then(() => {
+      res.status(200).end();
+    })
+    .catch(err => {
+      console.error(err);
+    });
+
 });
 
 app.put('/item', (req, res) => {

@@ -12,6 +12,7 @@
     "start": "nodemon server/server.js --open",
     "live": "pm2 start server/server.js",
     "save": "pm2 save",
+    "ec2": "ssh -i ~/.ssh/FEC.pem ubuntu@ec2-18-191-49-198.us-east-2.compute.amazonaws.com",
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "dependencies": {
@@ -21,8 +22,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.6.10",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-tooltip": "^3.11.1"
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

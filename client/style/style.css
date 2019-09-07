@@ -146,7 +146,6 @@
 
 .carouselToolTip {
   color: black !important;
-  background-color: lightgray !important;
-  visibility: visible !important;
+  background-color: #E8E8E8 !important;
   opacity: 1 !important
 }

@@ -7,7 +7,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      globalId: 66,
+      globalId: 38,
       globalCategory: '',
       itemData: [],
       indexOnScreen: 0,
@@ -176,6 +176,7 @@ class Carousel extends Component {
           let currentRender = this.state.itemsRendered.slice();
           currentRender.splice(count, 1, this.state.itemData[nextIndex][count]);
           count--;
+
           this.setState({ itemsRendered: currentRender}, () => {
             setTimeout(() => {
               if (count >= 0) {
@@ -256,6 +257,7 @@ class Carousel extends Component {
   }
 
   setReview (e, id) {
+    console.log(id);
     const event = new CustomEvent('clickedProduct', { detail: id });
     const myElement = document.getElementById('reviewsApp');
     const topPos = myElement.offsetTop;
