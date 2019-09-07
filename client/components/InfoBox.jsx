@@ -14,7 +14,7 @@ const InfoBox = (props) => {
       let int = ratingSplit[0];
       let round = ratingSplit[1];
       if (Number(round) > 2 && Number(round) < 9 ) {
-        rating = Number(int + '.' + '5')
+        rating = Number(int + '.' + '5');
       } else if (Number(round) <= 2 && Number(round) >= 0) {
         rating = Number(int);
       } else {
@@ -31,15 +31,6 @@ const InfoBox = (props) => {
         stars[index] = 1;
       }
     });
-
-    let splitLine = props.item.ItemName.split(' ');
-    let lineName = '';
-    let i = splitLine.length;
-
-    while (i >= 0) {
-      lineName += splitLine.splice(0, 4).join(' ') + '<br />';
-      i = i - 4;
-    }
 
     return (
       <div className="carouselItemBox">

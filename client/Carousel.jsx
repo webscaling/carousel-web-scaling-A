@@ -45,7 +45,7 @@ class Carousel extends Component {
     })
       .then()
       .catch(err => {
-        console.err(err);
+        console.error(err);
       });
   }
 
@@ -257,7 +257,6 @@ class Carousel extends Component {
   }
 
   setReview (e, id) {
-    console.log(id);
     const event = new CustomEvent('clickedProduct', { detail: id });
     const myElement = document.getElementById('reviewsApp');
     const topPos = myElement.offsetTop;
