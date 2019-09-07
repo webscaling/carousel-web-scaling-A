@@ -8,6 +8,7 @@ class Carousel extends Component {
     super(props);
     this.state = {
       globalId: 38,
+      pageReload: false,
       globalCategory: '',
       itemData: [],
       indexOnScreen: 0,
@@ -25,7 +26,6 @@ class Carousel extends Component {
         rightHover: 'https://shazamazon.s3.us-east-2.amazonaws.com/Carousel+Arrows/rightArrowHover.jpg',
       }
     };
-    this.getWidth = this.getWidth.bind(this);
   }
 
   /* /////////////////////// Functions for Mounting Items //////////////////////////
@@ -33,7 +33,7 @@ class Carousel extends Component {
 
   componentDidMount() {
     this.getLoading();
-    window.addEventListener('resize', this.getWidth);
+    window.addEventListener('resize', this.getWidth.bind(this));
     window.addEventListener('clickedProduct', this.setGlobalId.bind(this));
     window.addEventListener('reviewUpdate', this.updateReview.bind(this));
   }
@@ -43,10 +43,16 @@ class Carousel extends Component {
       Rating: event.detail.reviewsAvg,
       RatingCount: event.detail.numReviews
     })
-      .then()
-      .catch(err => {
-        console.error(err);
-      });
+      .then(() => {
+        if (this.state.pageReload) {
+          this.setState({ numOfItemsOnScreen: 0, itemData: [], indexOnScreen: 0, itemsRendered: [] }, () => {
+            this.getLoading();
+          });
+        } else {
+          this.setState({ pageReload: true });
+        }
+      })
+      .catch();
   }
 
   setGlobalId (event) {
@@ -80,9 +86,7 @@ class Carousel extends Component {
           this.getAllFromCategory(event, this.state.globalCategory);
         });
       })
-      .catch(err => {
-        console.error(err);
-      });
+      .catch();
   }
 
   getAllFromCategory(event, category) {
@@ -96,9 +100,7 @@ class Carousel extends Component {
           this.getWidth();
         });
       })
-      .catch(err => {
-        console.error(err);
-      });
+      .catch();
   }
 
   getWidth() {

@@ -35,7 +35,7 @@ app.post('/item', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).send({ error: err });
+      res.status(500).end();
     });
 });
 
@@ -45,12 +45,10 @@ app.get('/item', (req, res) => {
   carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } )
     .exec()
     .then(doc => {
-      console.log('get request successful');
       res.status(200).send(doc);
     })
     .catch(err => {
-      console.error(err);
-      res.status(500).send({ error: err });
+      res.status(500).end();
     });
 });
 

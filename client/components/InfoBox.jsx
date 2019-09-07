@@ -21,7 +21,6 @@ const InfoBox = (props) => {
         rating = Number(int) + 1;
       }
     }
-    console.log(rating);
     let stars = [0, 0, 0, 0, 0];
 
     stars.forEach((element, index) => {
