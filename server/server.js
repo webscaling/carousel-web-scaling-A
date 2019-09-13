@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { carouselItem } = require('../database/mongoose.js');
-const mongoose = require('mongoose');
-const postgres = require('../database/postgres');
+const { getItemById } = require('../database/postgres.js');
+const { seedData } = require('../database/postgres.js');
+//const { carouselItem } = require('../database/mongoose.js');
+//const mongoose = require('mongoose');
 const app = express();
 const port = 4444;
 
@@ -52,6 +53,11 @@ app.use(function (req, res, next) {
 //       res.status(500).end();
 //     });
 // });
+
+app.post('/seed', (req, res) => {
+  seedData();
+  res.send('database seeded');
+});
 
 // app.put('/seed', (req, res) => {
 //   const ratingCount = req.body.length;
