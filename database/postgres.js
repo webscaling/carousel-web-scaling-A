@@ -1,11 +1,91 @@
-const { Pool } = require('pg');
-const pool = new Pool();
+const { Pool, Client } = require('pg');
 
-module.exports = {
-  query: (text, params, callback) => {
-    return pool.query(text, params, callback);
-  },
+
+// const pool = new Pool(
+//   {
+//     user: 'whittledeedoodleedoo',
+//     host: 'localhost',
+//     database: 'whittledeedoodleedoo'
+//   }
+// );
+
+// pool.connect(err => {
+//   if (err) {
+//     console.error('connection error', err.stack);
+//   } else {
+//     console.log('connected');
+//   }
+// });
+
+// pool.query('SELECT * FROM millions WHERE id=5;', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
+
+const client = new Client({
+  user: 'whittledeedoodleedoo',
+  host: 'localhost',
+  database: 'whittledeedoodleedoo'
+});
+
+client.connect (err => {
+  if (err) {
+    console.error('connection error', err.stack);
+  } else {
+    console.log('connected to postgres');
+  }
+});
+
+const getItemById = function(inputId, callback) {
+  const queryString = `SELECT * FROM millions WHERE id=${inputId};`;
+  client.query(queryString, (err, res) => {
+    if (err) {
+      console.error('getItemById error', err.stack);
+    } else {
+      return callback(res.rows[0]);
+    }
+    client.end();
+  });
 };
+
+const seedData = function() {
+  //const start = Date.now()
+  const createTableText = 
+  `DROP TABLE IF EXISTS millions;
+
+  CREATE TABLE millions (
+      id SERIAL primary key,
+      item_name VARCHAR (250),
+      price NUMERIC (7, 2),
+      rating NUMERIC (7, 2),
+      rating_count SMALLINT,
+      category VARCHAR (30),
+      photo_url VARCHAR (250)
+  );`;
+  const seedDataText = 
+  `COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products1.txt' (FORMAT CSV, DELIMITER(','));
+  COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products2.txt' (FORMAT CSV, DELIMITER(','));`;
+
+  client.query(createTableText, (err) => {
+    if (err) {
+      console.error('create table error', err.stack);
+    } else {
+      console.log("table 'millions' created");
+    }
+  });
+
+  client.query(seedDataText, (err) => {
+    if (err) {
+      console.error('data seed error', err.stack);
+    } else {
+      console.log("10 millions records created in 'millions' table");
+    }
+    client.end();
+  });
+
+};
+
+module.exports = { getItemById, seedData };
 
 /*
 module.exports = {
