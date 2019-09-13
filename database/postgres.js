@@ -1,11 +1,38 @@
-const { Pool } = require('pg');
-const pool = new Pool();
+const { Pool, Client } = require('pg');
 
-module.exports = {
-  query: (text, params, callback) => {
-    return pool.query(text, params, callback);
-  },
-};
+const pool = new Pool(
+  {
+    user: 'whittledeedoodleedoo',
+    host: 'localhost',
+    database: 'shazamazon'
+  }
+);
+
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res);
+  pool.end();
+});
+
+const client = new Client({
+  user: 'whittledeedoodleedoo',
+  host: 'localhost',
+  database: 'shazamazon'
+});
+
+client.connect(err => {
+  if (err) {
+    console.error('connection error', err.stack)
+  } else {
+    console.log('connected')
+  }
+});
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res);
+  client.end();
+});
+
+
 
 /*
 module.exports = {
