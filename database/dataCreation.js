@@ -1,13 +1,16 @@
 const faker = require('faker');
 const fs = require('fs');
+const timerFn = require('timer-node');
+const timer = timerFn('test-timer');
 
 
 const createData1 = function() {
   return new Promise(resolve => {
-    let stream = fs.createWriteStream('products1.txt', { flags: 'a' });
+    let stream = fs.createWriteStream('products1.csv', { flags: 'a' });
 
     for (let i = 1; i <= 5000000; i++) {
       stream.write(
+        i + ',' +
         faker.commerce.productName() + ',' +
         faker.commerce.price() + ',' +
         parseFloat((Math.random() * Math.floor(5)).toFixed(2)) + ',' +
@@ -29,15 +32,18 @@ function resolveAfter5Seconds() {
 }
 
 async function createData2() {
+  timer.start();
 
   await createData1();
 
   await resolveAfter5Seconds();
 
-  let stream = fs.createWriteStream('products2.txt', { flags: 'a' });
+  let stream = fs.createWriteStream('products2.csv', { flags: 'a' });
 
   for (let i = 1; i <= 5000000; i++) {
+    let id = 5000000 + i
     stream.write(
+      id + ',' +
       faker.commerce.productName() + ',' +
       faker.commerce.price() + ',' +
       parseFloat((Math.random() * Math.floor(5)).toFixed(2)) + ',' +
@@ -46,7 +52,9 @@ async function createData2() {
       faker.image.imageUrl() + '\n')
   }
   stream.end();
-
+  timer.stop();
+  console.log(`10 million records written in ${timer.seconds()} seconds`);
+  console.log(`10 million records written in ${timer.milliseconds()} milliseconds`);
 };
 
 createData2();

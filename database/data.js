@@ -948,21 +948,21 @@ const data = [
   }
 ];
 
-const toDb = (obj => {
-  axios({
-    method: 'post',
-    url: 'http://localhost:4444/item/', 
-    data: obj
-  })
-    .then(data => 
-      console.log('success!')
-    )
-    .catch(err => 
-      console.error(err)
-    );
-});
+// const toDb = (obj => {
+//   axios({
+//     method: 'post',
+//     url: 'http://localhost:4444/item/', 
+//     data: obj
+//   })
+//     .then(data => 
+//       console.log('success!')
+//     )
+//     .catch(err => 
+//       console.error(err)
+//     );
+// });
 
-data.forEach(object => {
-  toDb(object);
-});
+// data.forEach(object => {
+//   toDb(object);
+// });
 
