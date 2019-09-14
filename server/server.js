@@ -4,6 +4,8 @@ const { getItemByPostgresId } = require('../database/postgres.js');
 const { seedPostgresData } = require('../database/postgres.js');
 //const { carouselItem } = require('../database/mongoose.js');
 //const mongoose = require('mongoose');
+const timerFn = require('timer-node');
+const timer = timerFn('test-timer');
 const app = express();
 const port = 4444;
 
@@ -54,10 +56,23 @@ app.use(function (req, res, next) {
 //     });
 // });
 
-app.post('/seedPostgres', (req, res) => {
-  seedPostgresData(function() {
-    res.send('postgres database seeded');
+app.get('/getPostgresItemById', (req, res) => {
+  getItemByPostgresId(req.query.id, function(err, result) {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(200).send(result);
+    }
   });
+});
+
+app.post('/seedPostgres', (req, res) => {
+  timer.start();
+  seedPostgresData(function() {
+    timer.stop();
+    console.log(timer.seconds()); 
+  });
+  res.send(`postgres database is seeding...`)
 });
 
 // app.put('/seed', (req, res) => {

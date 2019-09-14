@@ -1,4 +1,6 @@
 const { Pool, Client } = require('pg');
+const timerFn = require('timer-node');
+const timer = timerFn('test-timer');
 
 
 // const pool = new Pool(
@@ -37,19 +39,24 @@ client.connect (err => {
 });
 
 const getItemByPostgresId = function(inputId, callback) {
+  timer.start();
   const queryString = `SELECT * FROM millions WHERE id=${inputId};`;
   client.query(queryString, (err, res) => {
     if (err) {
-      console.error('getItemById error', err.stack);
+      client.end();
+      return callback (err, null);
     } else {
-      return callback(res.rows[0]);
+      timer.stop();
+      console.log(`Database queried by ID ${inputId} in ${timer.seconds()} seconds`);
+      console.log(`Database queried by ID ${inputId} in ${timer.milliseconds()} milliseconds`);
+      client.end();
+      return callback(null, (res.rows[0]));
     }
-    client.end();
   });
 };
 
 const seedPostgresData = function(callback) {
-  //const start = Date.now()
+  timer.start();
   const createTableText = 
   `DROP TABLE IF EXISTS millions;
 
@@ -80,6 +87,9 @@ const seedPostgresData = function(callback) {
     } else {
       console.log("10 millions records created in 'millions' table");
       callback();
+      timer.stop();
+      console.log(`Postgres database seeded in ${timer.seconds()} seconds`);
+      console.log(`Postgres database seeded in ${timer.milliseconds()} milliseconds`);
     }
     client.end();
   });
