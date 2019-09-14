@@ -70,8 +70,8 @@ const seedPostgresData = function(callback) {
       photo_url VARCHAR (250)
   );`;
   const seedDataText = 
-  `COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products1.txt' (FORMAT CSV, DELIMITER(','));
-  COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products2.txt' (FORMAT CSV, DELIMITER(','));`;
+  `COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products1.csv' (FORMAT CSV, DELIMITER(','));
+  COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products2.csv' (FORMAT CSV, DELIMITER(','));`;
 
   client.query(createTableText, (err) => {
     if (err) {
@@ -85,7 +85,7 @@ const seedPostgresData = function(callback) {
     if (err) {
       console.error('data seed error', err.stack);
     } else {
-      console.log("10 millions records created in 'millions' table");
+      console.log("10 million records created in 'millions' table");
       callback();
       timer.stop();
       console.log(`Postgres database seeded in ${timer.seconds()} seconds`);

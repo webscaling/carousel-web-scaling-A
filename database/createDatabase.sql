@@ -12,5 +12,5 @@ CREATE TABLE millions (
 
 
 
-COPY millions FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products1.txt' (FORMAT CSV, DELIMITER(','));
-COPY millions FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products2.txt' (FORMAT CSV, DELIMITER(','));
+COPY millions FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products1.csv' (FORMAT CSV, DELIMITER(','));
+COPY millions FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products2.csv' (FORMAT CSV, DELIMITER(','));
