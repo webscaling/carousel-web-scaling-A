@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { getItemById } = require('../database/postgres.js');
-const { seedData } = require('../database/postgres.js');
+const { getItemByPostgresId } = require('../database/postgres.js');
+const { seedPostgresData } = require('../database/postgres.js');
 //const { carouselItem } = require('../database/mongoose.js');
 //const mongoose = require('mongoose');
 const app = express();
@@ -54,9 +54,10 @@ app.use(function (req, res, next) {
 //     });
 // });
 
-app.post('/seed', (req, res) => {
-  seedData();
-  res.send('database seeded');
+app.post('/seedPostgres', (req, res) => {
+  seedPostgresData(function() {
+    res.send('postgres database seeded');
+  });
 });
 
 // app.put('/seed', (req, res) => {

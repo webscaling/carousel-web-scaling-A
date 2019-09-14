@@ -36,7 +36,7 @@ client.connect (err => {
   }
 });
 
-const getItemById = function(inputId, callback) {
+const getItemByPostgresId = function(inputId, callback) {
   const queryString = `SELECT * FROM millions WHERE id=${inputId};`;
   client.query(queryString, (err, res) => {
     if (err) {
@@ -48,7 +48,7 @@ const getItemById = function(inputId, callback) {
   });
 };
 
-const seedData = function() {
+const seedPostgresData = function(callback) {
   //const start = Date.now()
   const createTableText = 
   `DROP TABLE IF EXISTS millions;
@@ -79,13 +79,13 @@ const seedData = function() {
       console.error('data seed error', err.stack);
     } else {
       console.log("10 millions records created in 'millions' table");
+      callback();
     }
     client.end();
   });
-
 };
 
-module.exports = { getItemById, seedData };
+module.exports = { getItemByPostgresId, seedPostgresData };
 
 /*
 module.exports = {
