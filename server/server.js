@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { getItemByPostgresId } = require('../database/postgres.js');
 const { seedPostgresData } = require('../database/postgres.js');
 const { carouselItem } = require('../database/mongoose.js');
+const { getItemByMongoId } = require('../database/mongoose.js');
 const mongoose = require('mongoose');
 const timerFn = require('timer-node');
 const timer = timerFn('test-timer');
@@ -45,19 +46,29 @@ app.use(function (req, res, next) {
 
 
 
-// app.get('/item', (req, res) => {
-//   carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } )
-//     .exec()
-//     .then(doc => {
-//       res.status(200).send(doc);
-//     })
-//     .catch(err => {
-//       res.status(500).end();
-//     });
-// });
+app.get('/item', (req, res) => {
+  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } )
+    .exec()
+    .then(doc => {
+      res.status(200).send(doc);
+    })
+    .catch(err => {
+      res.status(500).end();
+    });
+});
+
+app.get('/getMongoItemById', (req, res) => {
+  getItemByMongoId(req.query.ProductId, function(err, result) {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(200).send(result);
+    }
+  });
+});
 
 app.get('/getPostgresItemById', (req, res) => {
-  getItemByPostgresId(req.query.id, function(err, result) {
+  getItemByPostgresId(req.query.ProductId, function(err, result) {
     if (err) {
       res.status(500).end();
     } else {
@@ -100,16 +111,16 @@ app.post('/seedPostgres', (req, res) => {
 
 // });
 
-// app.put('/item', (req, res) => {
-//   carouselItem.updateOne({ ProductId: req.body.ProductId }, { Rating: req.body.Rating, RatingCount: req.body.RatingCount })
-//     .exec()
-//     .then(() => {
-//       res.status(200).end();
-//     })
-//     .catch(err => {
-//       console.error(err);
-//     });
-// });
+app.put('/item', (req, res) => {
+  carouselItem.updateOne({ ProductId: req.body.ProductId }, { Rating: req.body.Rating, RatingCount: req.body.RatingCount })
+    .exec()
+    .then(() => {
+      res.status(200).end();
+    })
+    .catch(err => {
+      console.error(err);
+    });
+});
 
 
 

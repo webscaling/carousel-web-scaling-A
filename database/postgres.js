@@ -40,7 +40,7 @@ client.connect (err => {
 
 const getItemByPostgresId = function(inputId, callback) {
   timer.start();
-  const queryString = `SELECT * FROM millions WHERE id=${inputId};`;
+  const queryString = `SELECT * FROM millions WHERE ProductId=${inputId};`;
   client.query(queryString, (err, res) => {
     if (err) {
       client.end();
@@ -61,17 +61,17 @@ const seedPostgresData = function(callback) {
   `DROP TABLE IF EXISTS millions;
 
   CREATE TABLE millions (
-      id SERIAL primary key,
-      item_name VARCHAR (250),
-      price NUMERIC (7, 2),
-      rating NUMERIC (7, 2),
-      rating_count SMALLINT,
-      category VARCHAR (30),
-      photo_url VARCHAR (250)
+      ProductId SERIAL primary key,
+      ItemName VARCHAR (250),
+      Price NUMERIC (7, 2),
+      Rating NUMERIC (7, 2),
+      RatingCount SMALLINT,
+      Category VARCHAR (30),
+      Photo VARCHAR (250)
   );`;
   const seedDataText = 
-  `COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products1.csv' (FORMAT CSV, DELIMITER(','));
-  COPY millions (item_name, price, rating, rating_count, category, photo_url) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products2.csv' (FORMAT CSV, DELIMITER(','));`;
+  `COPY millions (ItemName, Price, Rating, RatingCount, Category, Photo) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products1.csv' (FORMAT CSV, DELIMITER(','));
+  COPY millions (ItemName, Price, Rating, RatingCount, Category, Photo) FROM '/Users/whittledeedoodleedoo/hratx43/hratx43-SDC/sdc-carousel/database/products2.csv' (FORMAT CSV, DELIMITER(','));`;
 
   client.query(createTableText, (err) => {
     if (err) {

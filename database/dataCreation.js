@@ -10,7 +10,7 @@ const createData1 = function() {
 
     for (let i = 1; i <= 5000000; i++) {
       stream.write(
-        i + ',' +
+        //i + ',' +
         faker.commerce.productName() + ',' +
         faker.commerce.price() + ',' +
         parseFloat((Math.random() * Math.floor(5)).toFixed(2)) + ',' +
@@ -43,7 +43,7 @@ async function createData2() {
   for (let i = 1; i <= 5000000; i++) {
     let id = 5000000 + i
     stream.write(
-      id + ',' +
+      //id + ',' +
       faker.commerce.productName() + ',' +
       faker.commerce.price() + ',' +
       parseFloat((Math.random() * Math.floor(5)).toFixed(2)) + ',' +
