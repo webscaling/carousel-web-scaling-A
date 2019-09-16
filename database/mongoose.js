@@ -10,6 +10,7 @@ mongoConnection.once('open', function () {
   console.log('connected to mongoDB');
 });
 
+
 const schema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   ProductId: Number,
@@ -26,7 +27,6 @@ const carouselItem = mongoose.model('tenMillion', schema);
 const getItemByMongoId = function(inputId, callback) {
   timer.start();
   var query = carouselItem.find({ ProductId: inputId });
-  //var promise = query.exec();
   query.exec(function(err, item) {
     console.log(item, 'here');
     if (err) {
