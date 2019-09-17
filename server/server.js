@@ -47,7 +47,7 @@ app.use(function (req, res, next) {
 
 
 app.get('/item', (req, res) => {
-  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } )
+  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category }.limit(15) : { ProductId: req.query.ProductId } )
     .exec()
     .then(doc => {
       res.status(200).send(doc);

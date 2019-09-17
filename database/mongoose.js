@@ -28,7 +28,6 @@ const getItemByMongoId = function(inputId, callback) {
   timer.start();
   var query = carouselItem.find({ ProductId: inputId });
   query.exec(function(err, item) {
-    console.log(item, 'here');
     if (err) {
       timer.stop();
       return callback (err, null);
