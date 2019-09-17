@@ -39,7 +39,7 @@ const getItemByMongoId = function(inputId, callback) {
       return callback(null, item);
     } else {
       timer.stop();
-      console.log(`No item found in MongoDB with ProductId = ${inputId}`)
+      console.log(`No item found in MongoDB with ProductId = ${inputId}`);
     }
   });
 };

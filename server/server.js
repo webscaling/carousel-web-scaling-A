@@ -14,45 +14,47 @@ const port = 4444;
 app.use(express.static('client'));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Access-Control-Allow-Headers', '*');
   next();
 });
 
-// app.post('/item', (req, res) => {
-//   const item = new carouselItem({
-//     _id: new mongoose.Types.ObjectId(),
-//     ProductId: req.body.ProductId,
-//     ItemName: req.body.ItemName,
-//     Price: req.body.Price,
-//     Rating: req.body.Rating,
-//     RatingCount: Math.floor(Math.random() * 20) + 1,
-//     Category: req.body.Category,
-//     Photo: req.body.Photo[0],
-//   });
-//   item.save()
-//     .then(result => {
-//       res.status(201).send({
-//         message: 'handling POST requests to /item',
-//         createdProduct: result
-//       });
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).end();
-//     });
-// });
+app.post('/item', (req, res) => {
+  const item = new carouselItem({
+    _id: new mongoose.Types.ObjectId(),
+    ProductId: req.body.ProductId,
+    ItemName: req.body.ItemName,
+    Price: req.body.Price,
+    Rating: req.body.Rating,
+    RatingCount: req.body.RatingCount,
+    Category: req.body.Category,
+    Photo: req.body.Photo[0],
+  });
+  item.save()
+    .then(result => {
+      res.status(201).send({
+        message: 'handling POST requests to /item',
+        createdProduct: result
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).end();
+    });
+});
 
 
 
 app.get('/item', (req, res) => {
-  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category }.limit(15) : { ProductId: req.query.ProductId } )
+  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } ).limit(20)
     .exec()
     .then(doc => {
+      console.log(doc)
       res.status(200).send(doc);
     })
     .catch(err => {
+      console.log(err);
       res.status(500).end();
     });
 });
@@ -83,7 +85,7 @@ app.post('/seedPostgres', (req, res) => {
     timer.stop();
     console.log(timer.seconds()); 
   });
-  res.send(`postgres database is seeding...`)
+  res.send('postgres database is seeding...');
 });
 
 // app.put('/seed', (req, res) => {
