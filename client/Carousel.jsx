@@ -38,7 +38,7 @@ class Carousel extends Component {
     window.addEventListener('reviewUpdate', this.updateReview.bind(this));
   }
   updateReview(event) {
-    axios.put('http://18.191.49.198/item', {
+    axios.put('/item', {
       ProductId: this.state.globalId,
       Rating: event.detail.reviewsAvg,
       RatingCount: event.detail.numReviews
@@ -76,21 +76,24 @@ class Carousel extends Component {
   }
 
   getCategory() {
-    axios.get('http://18.191.49.198/item', {
+    axios.get('/item', {
       params: {
         ProductId: this.state.globalId 
       }
     })
       .then(data => {
+        console.log(data);
         this.setState({ globalCategory: data.data[0].Category }, () => {
           this.getAllFromCategory(event, this.state.globalCategory);
         });
       })
-      .catch();
+      .catch(err => {
+        console.error(err, 'hello');
+      });
   }
 
   getAllFromCategory(event, category) {
-    axios.get('http://18.191.49.198/item', { 
+    axios.get('/item', { 
       params: {
         Category: category
       }

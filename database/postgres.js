@@ -77,7 +77,7 @@ const seedPostgresData = function(callback) {
     if (err) {
       console.error('create table error', err.stack);
     } else {
-      console.log("table 'millions' created");
+      console.log('table "millions" created');
     }
   });
 
@@ -85,7 +85,7 @@ const seedPostgresData = function(callback) {
     if (err) {
       console.error('data seed error', err.stack);
     } else {
-      console.log("10 million records created in 'millions' table");
+      console.log('10 million records created in "millions" table');
       callback();
       timer.stop();
       console.log(`Postgres database seeded in ${timer.seconds()} seconds`);
