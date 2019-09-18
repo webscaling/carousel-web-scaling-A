@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { getItemByPostgresId } = require('../database/postgres.js');
@@ -50,7 +51,6 @@ app.get('/item', (req, res) => {
   carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } ).limit(20)
     .exec()
     .then(doc => {
-      console.log(doc)
       res.status(200).send(doc);
     })
     .catch(err => {
