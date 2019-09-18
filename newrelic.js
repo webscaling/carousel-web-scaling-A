@@ -1,6 +1,6 @@
 'use strict'
 
-const licenseKey = require('license_key.js');
+const licenseKey = require('./license_key.js');
 /**
  * New Relic agent configuration.
  *
@@ -11,7 +11,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['sdc-carousel/server/server.js'],
+  app_name: ['Carousel'],
   /**
    * Your New Relic license key.
    */
