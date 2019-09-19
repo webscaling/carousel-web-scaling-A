@@ -59,25 +59,25 @@ app.get('/item', (req, res) => {
     });
 });
 
-app.get('/getMongoItemById', (req, res) => {
-  getItemByMongoId(req.query.ProductId, function(err, result) {
-    if (err) {
-      res.status(500).end();
-    } else {
-      res.status(200).send(result);
-    }
-  });
-});
+// app.get('/getMongoItemById', (req, res) => {
+//   getItemByMongoId(req.query.ProductId, function(err, result) {
+//     if (err) {
+//       res.status(500).end();
+//     } else {
+//       res.status(200).send(result);
+//     }
+//   });
+// });
 
-app.get('/getPostgresItemById', (req, res) => {
-  getItemByPostgresId(req.query.ProductId, function(err, result) {
-    if (err) {
-      res.status(500).end();
-    } else {
-      res.status(200).send(result);
-    }
-  });
-});
+// app.get('/getPostgresItemById', (req, res) => {
+//   getItemByPostgresId(req.query.ProductId, function(err, result) {
+//     if (err) {
+//       res.status(500).end();
+//     } else {
+//       res.status(200).send(result);
+//     }
+//   });
+// });
 
 app.post('/seedPostgres', (req, res) => {
   timer.start();
