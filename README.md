@@ -1,7 +1,7 @@
 # System Design
 
 
-##About
+## About
 
 The goal of this project was to take a previously built e-commerce site web service (https://github.com/shazamazon/module-the-best-carousel) and refactor the backend to handle a much larger data set.  
 
