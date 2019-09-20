@@ -1,5 +1,6 @@
 # System Design
 
+
 ##About
 
 The goal of this project was to take a previously built e-commerce site web service (https://github.com/shazamazon/module-the-best-carousel) and refactor the backend to handle a much larger data set.  
@@ -36,6 +37,7 @@ Some issues I ran into while building the service:
 3.  Decreasing query times and improving my server's RPS capabilities.
 
 User Stories
+
 As a User, I should be able see related product questions and answers when a new product is requested, without much latency.
 
 
