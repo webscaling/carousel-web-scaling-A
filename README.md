@@ -1,70 +1,46 @@
-# Shazamazon Carousel
+# System Design
 
-Built using React, the Shazamazon Carousel component is one part of a larger Amazon clone. The component is able to render multiple item pictures, names, review statistics, and prices from items in the same category as the main item being viewed.  The carousel component is responsive to changes in the window's width.  While adjusting the window size, the page populates enough items to fit in the allotted space, updates the total page count, and maintains the current items on screen while the storage matrix is reconfigured. The carousel component renders a loading gif while new data is being fetched.
+##About
 
-## Stack
+The goal of this project was to take a previously built e-commerce site web service (https://github.com/shazamazon/module-the-best-carousel) and refactor the backend to handle a much larger data set.  
+
+This project was built using an existing code base and then scaling it to handle ten million items (instead of the 105 items that it was originally built to display).  This means it's able to perform effectively with a dramatically larger product portfolio and handle a larger number of requests per second.
+
+I set up both PostgreSQL and MongoDB and seeded each database with ten million items.  Then I used npm loadtest and New Relic to stress test each database and improve performance.  
+
+The goal of the carousel web service evaluation was to compare the efficacy of various deployment methods, databases, and tools to accomplish scale and make other optimizations and enhancements.
+
+## Tech Stack
 
 This component is built with the following technologies:
 
   - React (front-end)
   - Express (server)
-  - MongoDB Atlas (Cloud, non-relational database)
+  - MongoDB (non-relational database)
   - Mongoose (server/database communication)
-  - Amazon EC2 (deployment)
+  - PostgreSQL (relational database)
+  - node-postgres (server/database communication)
+  - New Relic (tool for stress testing)
+  - npm loadtest (tool for stress testing)
 
-## Getting Started
+## Technical Challenges / Research
 
-1. Install npm packages:
-```
-npm install
-```
-2. Create a config.js file inside the ./database directory.
-```
-cd ./database
-touch config.js
-```
+https://docs.google.com/document/d/1p9Lyn4YmrThfk_4N6tTqr7LRPVUU3iA-Pd_BZKmcbMU/edit?usp=sharing
 
-3. Decaire and export a variable that holds the uri string with the provided password to the Mongo database.
-```
-const uri = 'mongodb+srv://<password>:VUav3KFWtm7GT7bC@fec-carousel-xdbvm.mongodb.net/module-carousel?retryWrites=true&w=majority';
+Some issues I ran into while building the service:
 
-module.exports = { uri };
+1.   Generating 10M fake product records took a good deal of RAM and CPU, which stressed my computer significantly. Optimization strategies had to be developed.
 
-```
+2.  Import/Exporting/Manipulating data at scale --- the rules and capabilities of technology, especially databases, are very different with 10M primary records. MongoDB and PSQL were not initially performant at that scale, and required indexing.
 
-4. Start the server:
-```
-npm start
-```
+3.  Decreasing query times and improving my server's RPS capabilities.
+
+User Stories
+As a User, I should be able see related product questions and answers when a new product is requested, without much latency.
 
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
 
-## Table of Contents
+## Minimum Viable Product (MVP)
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
+The MVP requirement was to be able to performantly serve 500 RPS(requests per second) and keep query times under 50ms, while deployed.
 
