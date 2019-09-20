@@ -45,7 +45,7 @@ const InfoBox = (props) => {
               return (<p key={index} className="carouselStar far fa-star"></p>);
             }
           })}
-          <p className="carouselRating">{props.item.RatingCount}</p>
+          <p className="carouselRating">{props.item.ratingcount}</p>
         </div>
         <p className="carouselPrice" onClick={() => props.setGlobal(event, props.item.ProductId)}>${props.item.Price.toFixed(2)}
           <img className="carouselLogo" src='https://cart-icons.s3.us-east-2.amazonaws.com/shazam.png'></img>

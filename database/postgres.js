@@ -40,17 +40,31 @@ client.connect (err => {
 
 const getItemByPostgresId = function(inputId, callback) {
   timer.start();
-  const queryString = `SELECT * FROM millions WHERE ProductId=${inputId};`;
+  const queryString = `SELECT * FROM millions WHERE productid=${inputId};`;
   client.query(queryString, (err, res) => {
     if (err) {
-      client.end();
       return callback (err, null);
     } else {
       timer.stop();
       console.log(`Database queried by ID ${inputId} in ${timer.seconds()} seconds`);
       console.log(`Database queried by ID ${inputId} in ${timer.milliseconds()} milliseconds`);
-      client.end();
       return callback(null, (res.rows[0]));
+    }
+  });
+};
+
+const getCategoryByPostgres = function(category, callback) {
+  timer.start();
+  const queryString = `SELECT * FROM millions WHERE category='${category}' LIMIT 200;`;
+  client.query(queryString, (err, res) => {
+    if (err) {
+      return callback (err, null);
+    } else {
+      timer.stop();
+      console.log(`Database queried by category ${category} in ${timer.seconds()} seconds`);
+      console.log(`Database queried by category ${category} in ${timer.milliseconds()} milliseconds`);
+      console.log(res.rows)
+      return callback(null, (res.rows));
     }
   });
 };
@@ -95,7 +109,7 @@ const seedPostgresData = function(callback) {
   });
 };
 
-module.exports = { getItemByPostgresId, seedPostgresData };
+module.exports = { getItemByPostgresId, seedPostgresData, getCategoryByPostgres };
 
 /*
 module.exports = {

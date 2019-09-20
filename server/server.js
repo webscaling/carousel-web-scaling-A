@@ -2,9 +2,11 @@ require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { getItemByPostgresId } = require('../database/postgres.js');
+const { getCategoryByPostgres } = require('../database/postgres.js');
 const { seedPostgresData } = require('../database/postgres.js');
 const { carouselItem } = require('../database/mongoose.js');
 const { getItemByMongoId } = require('../database/mongoose.js');
+
 const mongoose = require('mongoose');
 const timerFn = require('timer-node');
 const timer = timerFn('test-timer');
@@ -48,7 +50,7 @@ app.post('/item', (req, res) => {
 
 
 app.get('/item', (req, res) => {
-  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } ).limit(20)
+  carouselItem.find(req.query.Category !== undefined ? { Category: req.query.Category } : { ProductId: req.query.ProductId } ).limit(200)
     .exec()
     .then(doc => {
       res.status(200).send(doc);
@@ -69,15 +71,27 @@ app.get('/item', (req, res) => {
 //   });
 // });
 
-// app.get('/getPostgresItemById', (req, res) => {
-//   getItemByPostgresId(req.query.ProductId, function(err, result) {
-//     if (err) {
-//       res.status(500).end();
-//     } else {
-//       res.status(200).send(result);
-//     }
-//   });
-// });
+app.get('/getPostgresItemById', (req, res) => {
+  if (req.query.category === undefined) {
+    getItemByPostgresId(req.query.productid, function(err, result) {
+      if (err) {
+        res.status(500).end();
+      } else {
+        console.log(result);
+        res.status(200).send(result);
+      }
+    });
+  } else {
+  getCategoryByPostgres(req.query.category, function(err, result) {
+    if (err) {
+      res.status(500).end();
+    } else {
+      console.log(result)
+      res.status(200).send(result);
+    }
+  });
+ }
+});
 
 app.post('/seedPostgres', (req, res) => {
   timer.start();

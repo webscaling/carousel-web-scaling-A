@@ -7,7 +7,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      globalId: Math.floor(Math.random() * (Math.floor(1000000) - Math.ceil(9000000))) + Math.ceil(9000000),
+      globalId: Math.floor(Math.random() * (Math.floor(10000000) - Math.ceil(9000000))) + Math.ceil(9000000),
       pageReload: false,
       globalCategory: '',
       itemData: [],
@@ -82,7 +82,6 @@ class Carousel extends Component {
       }
     })
       .then(data => {
-        console.log(data);
         this.setState({ globalCategory: data.data[0].Category }, () => {
           this.getAllFromCategory(event, this.state.globalCategory);
         });
@@ -144,7 +143,7 @@ class Carousel extends Component {
         this.setState({ firstIndexOnFlatArrayOfItemOnScreen: firstItemIndex}, () => {
           renderThis = flatCopyForView.slice(firstItemIndex, firstItemIndex + this.state.numOfItemsOnScreen);
           let isLastIndex = false;
-          if (this.state.indexOnScreen === this.state.itemData.length - 1) {
+          if (this.state.indexOnScreen === this.state.itemdData.length - 1) {
             isLastIndex = true;
           }
           this.setState({ itemData: result, itemsRendered: renderThis }, () => {
