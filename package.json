@@ -16,9 +16,9 @@
     "mongo": "mongod --config /usr/local/etc/mongod.conf"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "convert-csv-to-json": "0.0.15",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mongoose": "^5.6.10",
     "newrelic": "^5.11.0",
     "react": "^16.9.0",
